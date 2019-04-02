@@ -96,13 +96,13 @@ double calculateHValue(int row, int col, Pair dest)
 	return ((double)sqrt ((row-dest.first)*(row-dest.first)
 						+ (col-dest.second)*(col-dest.second)));
 }
-/* void showanswer(deque<Ans>Check_Answer){
-    set<Ans>::const_iterator itr;
+ void showanswer(deque<Ans>Check_Answer){
+    deque<Ans>::const_iterator itr;
     cout<<"Answer:"<<endl;
     for(itr = Check_Answer.begin();itr!=Check_Answer.end();++itr){
-        cout<<(*itr)->first<<" "<<(*itr)->second<<endl;
+        cout<<(itr)->first<<" "<<(itr)->second<<endl;
     }
-} */
+}
 // A Utility Function to trace the path from the source
 // to destination
 void tracePath(cell cellDetails[][COL], Pair dest, int grid[][COL],Pair src )
@@ -135,8 +135,7 @@ int x_cor,y_cor=51;
 	}
 	int i,x,y,Key;
 	int a= src.first, b=src.second;
-    cout<<"You have \x03 Lifelines"<<endl;
-	cout<<"Enter -1,-1 to terminate answer"<<endl;
+    cout<<"Enter -1,-1 to terminate answer"<<endl;
     while(true){
             cin>>Key;
             if(Key==0)
@@ -196,6 +195,11 @@ int x_cor,y_cor=51;
     else {
         cout <<"Oops This was no brainer dude! Anyway Try again next time :p"<<endl;
     }
+    char ch;
+    cout<<"Do you want to know the answer ?\n";
+            cin>>ch;
+            if(ch=='y'||ch=='Y')
+        		showanswer(Check_Answer);
 }
 
 
@@ -345,7 +349,7 @@ void aStarSearch(int grid[][COL], Pair src, Pair dest)
 				hNew = calculateHValue (i-1, j, dest);
 				fNew = gNew + hNew;
 
-				// If it isnt on the open list, add it to
+				// If it isnÂ’t on the open list, add it to
 				// the open list. Make the current square
 				// the parent of this square. Record the
 				// f, g, and h costs of the square cell
@@ -396,7 +400,7 @@ void aStarSearch(int grid[][COL], Pair src, Pair dest)
 				hNew = calculateHValue(i+1, j, dest);
 				fNew = gNew + hNew;
 
-				// If it isnt on the open list, add it to
+				// If it isnÂ’t on the open list, add it to
 				// the open list. Make the current square
 				// the parent of this square. Record the
 				// f, g, and h costs of the square cell
@@ -446,7 +450,7 @@ void aStarSearch(int grid[][COL], Pair src, Pair dest)
 				hNew = calculateHValue (i, j+1, dest);
 				fNew = gNew + hNew;
 
-				// If it isnt on the open list, add it to
+				// If it isnÂ’t on the open list, add it to
 				// the open list. Make the current square
 				// the parent of this square. Record the
 				// f, g, and h costs of the square cell
@@ -498,7 +502,7 @@ void aStarSearch(int grid[][COL], Pair src, Pair dest)
 				hNew = calculateHValue(i, j-1, dest);
 				fNew = gNew + hNew;
 
-				// If it isnt on the open list, add it to
+				// If it isnÂ’t on the open list, add it to
 				// the open list. Make the current square
 				// the parent of this square. Record the
 				// f, g, and h costs of the square cell
@@ -550,7 +554,7 @@ void aStarSearch(int grid[][COL], Pair src, Pair dest)
 				hNew = calculateHValue(i-1, j+1, dest);
 				fNew = gNew + hNew;
 
-				// If it isnt on the open list, add it to
+				// If it isnÂ’t on the open list, add it to
 				// the open list. Make the current square
 				// the parent of this square. Record the
 				// f, g, and h costs of the square cell
@@ -602,7 +606,7 @@ void aStarSearch(int grid[][COL], Pair src, Pair dest)
 				hNew = calculateHValue(i-1, j-1, dest);
 				fNew = gNew + hNew;
 
-				// If it isnt on the open list, add it to
+				// If it isnÂ’t on the open list, add it to
 				// the open list. Make the current square
 				// the parent of this square. Record the
 				// f, g, and h costs of the square cell
@@ -652,7 +656,7 @@ void aStarSearch(int grid[][COL], Pair src, Pair dest)
 				hNew = calculateHValue(i+1, j+1, dest);
 				fNew = gNew + hNew;
 
-				// If it isnt on the open list, add it to
+				// If it isnÂ’t on the open list, add it to
 				// the open list. Make the current square
 				// the parent of this square. Record the
 				// f, g, and h costs of the square cell
@@ -704,7 +708,7 @@ void aStarSearch(int grid[][COL], Pair src, Pair dest)
 				hNew = calculateHValue(i+1, j-1, dest);
 				fNew = gNew + hNew;
 
-				// If it isnt on the open list, add it to
+				// If it isnÂ’t on the open list, add it to
 				// the open list. Make the current square
 				// the parent of this square. Record the
 				// f, g, and h costs of the square cell
@@ -910,7 +914,6 @@ int main()
 	char choice,opt;
     cout<<"\t\t\t-------------S . P . F------------\n";
     cout<<"\t\t\t------(SHORTEST PATH FINDER)------\n";
-
 	do
 	{
 		cout<<"\n\tPRESS :\n  \t (E)EASY\n  \t (M)MEDIUM \n  \t (H)HARD \n  \t (X)EXTREME\n";
@@ -958,4 +961,3 @@ int main()
 
 	return(0);
 }
-
